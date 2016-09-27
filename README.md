@@ -1,8 +1,13 @@
 # p-strace
-p-strace is a simple python script for you to monitor output of a specific process on linux. So you don't have to stare at the display impatiently waiting.
+p-strace is simply a wrapper of linux `strace` command, and gives notifications(sound, screen flicker and printed log) when specific output is detected. So you needn't stare at the display impatiently waiting any more.
 
-##usage
-Say you have a very complex task running (might be some machine learning stuff), and it keep printing 'iteration 71/1000'  and others.
+##simple usage
+```
+sudo python p-strace.py [PID] '[Sensitive String]'
+```
+
+##A common scenario
+Say you have a very complex task running (might be some machine learning stuff, pid:2345), and it keep printing 'iteration 71/1000'  and others.
 ```
 Iteration 1 / 1000
   Content 1 loss: 332424.57665
@@ -22,13 +27,10 @@ Iteration 71 / 1000
 Now, when the iteration achieves 100 you want to get a notification. So you should:
 
 ```
-mcfatealan@mcfatealan-desktop: ~$ sudo python p-strace.py
-input pid: [PID]
-input sensitive word:  Iteration 100 / 1000
+mcfatealan@mcfatealan-desktop: ~$ sudo python p-strace.py 2345 'Iteration 100 / 1000'
 ```
 
-
-When the process outputs that line, you will get a `Retard Alert` with some beeps. You will also get one when the process exits.
+When the process outputs that line, you will get a `Retard Alert` with some beeps, along with screen flickering. You will also get alerts when the process exits.
 
 Maybe later I will add more complex functions like:
   * more advanced judge rules: regex and condition.
