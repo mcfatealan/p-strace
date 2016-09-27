@@ -30,4 +30,8 @@ input sensitive word:  Iteration 100 / 1000
 
 When the process outputs that line, you will get a `Retard Alert` with some beeps. You will also get one when the process exits.
 
+Maybe later I will add more complex functions like:
+  * more advanced judge rules: regex and condition.
+  * better notification: colorful display and animation (local), or even email (remote)
+  
 Enjoy your coffee.
