@@ -28,6 +28,6 @@ input sensitive word:  Iteration 100 / 1000
 ```
 
 
-When the process outputs that line, you will get a `Retard Alert` with some beeps.
+When the process outputs that line, you will get a `Retard Alert` with some beeps. You will get one when the process exits.
 
 Enjoy your coffee.
