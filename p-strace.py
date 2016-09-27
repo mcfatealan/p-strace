@@ -4,12 +4,17 @@ import subprocess
 def attach(pid,word):
     sp = subprocess.Popen(['strace', '-p'+pid,'-s9999','-e','write'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     for line in iter(sp.stderr.readline, ''):
-        if(filter(line,word)):
+        if(filter(line,word) or taskend(line)):
             notify()
         if not line: break
 
 def filter(line,sensitive_word):
     if sensitive_word in line:
+        return True
+    return False
+
+def taskend(line):
+    if '+++ exited with' in line:
         return True
     return False
 
