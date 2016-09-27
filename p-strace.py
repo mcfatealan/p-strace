@@ -1,6 +1,8 @@
 import os,time,sys
 import subprocess
 
+bright_level = 1.5
+
 pid = ''
 word = ''
 display = ''
@@ -35,7 +37,7 @@ def notify():
     
     print '************************RETARD ALERT************************'
     try:
-        screen_flicker(1.1,0.1)
+        screen_flicker(bright_level,0.1)
         screen_flicker(1.0,0.3)
     finally:
         screen_flicker(1.0,0)
