@@ -6,7 +6,7 @@ p-strace is simply a wrapper of linux `strace` command, and gives notifications(
 sudo python p-strace.py [PID] '[Sensitive String]'
 ```
 
-##A common scenario
+##a common scenario
 Say you have a very complex task running (might be some machine learning stuff, pid:2345), and it keep printing 'iteration 71/1000'  and others.
 ```
 Iteration 1 / 1000
@@ -30,8 +30,24 @@ Now, when the iteration achieves 100 you want to get a notification. So you shou
 mcfatealan@mcfatealan-desktop: ~$ sudo python p-strace.py 2345 'Iteration 100 / 1000'
 ```
 
-When the process outputs that line, you will get a `Retard Alert` with some beeps, along with screen flickering. You will also get alerts when the process exits.
+When the process outputs that line, you will get:
+* a `Retard Alert`:
+```
+************************RETARD ALERT************************
+write(1, "Iteration 100 / 1000\n", 21)                     = 21
+```
+* six short beeps
+* screen flicker
 
+You will also get alerts when the process exits.
+
+##related system command
+`strace`
+`xrandr`
+
+tested on Ubuntu.
+
+##future
 Maybe later I will add more complex functions like:
   * more advanced judge rules: regex and condition.
   * better notification: colorful display and animation (local), or even email (remote)
