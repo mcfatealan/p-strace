@@ -9,6 +9,8 @@ display = ''
 
 def attach():
     sp = subprocess.Popen(['strace', '-p'+pid,'-s9999','-e','write'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print sp.stderr.readline()
+
     for line in iter(sp.stderr.readline, ''):
         if(filter(line) or taskend(line)):
             notify()
